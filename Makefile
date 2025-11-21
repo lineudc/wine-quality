@@ -3,7 +3,15 @@ PIP = pip
 VENV = .venv
 BIN = $(VENV)/bin
 
-.PHONY: setup run test clean
+.PHONY: setup run test clean help
+
+help:
+	@echo "Comandos disponíveis:"
+	@echo "  make setup   - Cria ambiente virtual e instala dependências"
+	@echo "  make run     - Executa a análise completa"
+	@echo "  make test    - Executa os testes unitários"
+	@echo "  make clean   - Remove arquivos temporários"
+
 
 setup:
 	$(PYTHON) -m venv $(VENV)

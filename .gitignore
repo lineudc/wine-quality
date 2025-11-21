@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Project outputs
+outputs/*
+!outputs/.gitkeep
+
+# Large media files
+*.tif
+*.mp4
+*.png
+*.jpg

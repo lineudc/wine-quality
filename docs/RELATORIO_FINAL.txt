@@ -1,0 +1,105 @@
+================================================================================
+RELATÓRIO TÉCNICO - ANÁLISE DO WINE QUALITY DATASET
+Vinho Verde (Portugal) - Cortez et al., 2009
+================================================================================
+
+1. DATASET
+--------------------------------------------------------------------------------
+• Total de amostras: 5320
+• Vinho Tinto: 1599 amostras (30.1%)
+• Vinho Branco: 4898 amostras (92.1%)
+• Features físico-químicas: 11
+• Range de qualidade: 3 a 9
+• Qualidade média (Tinto): 5.64 ± 0.81
+• Qualidade média (Branco): 5.88 ± 0.89
+
+2. PRINCIPAIS DESCOBERTAS - EDA
+--------------------------------------------------------------------------------
+
+Correlações Positivas mais Fortes com Qualidade:
+  • alcohol: 0.469
+  • citric acid: 0.098
+  • free sulfur dioxide: 0.054
+
+Correlações Negativas mais Fortes com Qualidade:
+  • density: -0.326
+  • volatile acidity: -0.265
+  • chlorides: -0.202
+
+3. MODELAGEM - PREDIÇÃO DE QUALIDADE
+--------------------------------------------------------------------------------
+
+🏆 Melhor Modelo: Random Forest
+   • Test MAE: 0.5377
+   • Test R²: 0.3718
+
+Ranking de Modelos (por MAE):
+  1. Random Forest: MAE = 0.5377, R² = 0.3718
+  2. Gradient Boosting: MAE = 0.5393, R² = 0.3706
+  3. SVR: MAE = 0.5497, R² = 0.3243
+  4. Ridge Regression: MAE = 0.5641, R² = 0.3003
+  5. Linear Regression: MAE = 0.5662, R² = 0.2968
+  6. Lasso Regression: MAE = 0.6035, R² = 0.2375
+  7. Decision Tree: MAE = 0.6127, R² = 0.1873
+
+4. MODELAGEM - CLASSIFICAÇÃO DE TIPO (TINTO vs BRANCO)
+--------------------------------------------------------------------------------
+
+🏆 Melhor Modelo: SVM
+   • Test Accuracy: 0.9953 (99.53%)
+   • Test AUC-ROC: 0.9995
+
+Ranking de Modelos (por Accuracy):
+  1. SVM: Acc = 0.9953, AUC = 0.9995
+  2. Random Forest: Acc = 0.9934, AUC = 0.9993
+  3. Logistic Regression: Acc = 0.9897, AUC = 0.9952
+  4. Decision Tree: Acc = 0.9774, AUC = 0.9652
+
+📊 CONCLUSÃO - 'NARIZ QUÍMICO':
+✓ O algoritmo consegue distinguir vinhos tintos de brancos com
+  EXCELENTE precisão (99.53%) baseado APENAS nas
+  propriedades físico-químicas, comprovando que existe uma
+  'assinatura química' distinta entre os tipos.
+
+5. FEATURE IMPORTANCE
+--------------------------------------------------------------------------------
+
+Top 5 Features para Predição de Qualidade:
+  14. density_adjusted: 0.3011
+  2. volatile acidity: 0.1121
+  13. free_so2_ratio: 0.0834
+  10. sulphates: 0.0591
+  6. free sulfur dioxide: 0.0531
+
+Top 5 Features para Classificação de Tipo:
+  7. total sulfur dioxide: 0.3151
+  5. chlorides: 0.2420
+  2. volatile acidity: 0.1159
+  8. density: 0.0821
+  4. residual sugar: 0.0664
+
+6. RECOMENDAÇÕES TÉCNICAS
+--------------------------------------------------------------------------------
+
+6.1 Para Predição de Qualidade:
+  • Algoritmos ensemble (Random Forest, Gradient Boosting) apresentam
+    melhor desempenho que modelos lineares
+  • Features relacionadas ao álcool, acidez volátil e sulfatos são
+    os principais preditores de qualidade
+  • Feature engineering (criação de índices e razões) pode melhorar
+    marginalmente a performance
+
+6.2 Para Produção:
+  • Aumentar teor alcoólico (dentro dos limites legais) tende a
+    melhorar a percepção de qualidade
+  • Controlar rigorosamente acidez volátil (ácido acético)
+  • Monitorar níveis de sulfatos para otimizar conservação
+
+6.3 Para Certificação:
+  • O modelo de ML pode ser usado como sistema de apoio à decisão
+  • Tolerância de ±0.5 pontos é razoável para validação
+  • Casos com grande discrepância devem passar por revisão manual
+
+================================================================================
+FIM DO RELATÓRIO
+================================================================================
